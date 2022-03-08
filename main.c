@@ -4,12 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int yylex();
-extern char *yytext;
 extern FILE *yyin;
-
-int isRunning(void);
-void initMe(void);
 
 int main(int argc, char **argv){
 
@@ -26,18 +21,9 @@ int main(int argc, char **argv){
         exit(2);
 	}
 
-	initMe();
+	hashInit();
 
-	while(isRunning()){
-		token = yylex();
-
-		if(!isRunning()){ // workaround for EOF error
-			break;
-		}
-
-		printf("LINE: %d \t TOKEN: %d \t CONTEÚDO: %s\n", getLineNumber(), token, yytext);
-	}
+    yyparse();
 	
-	hashPrint();
 	exit(0);
 }
