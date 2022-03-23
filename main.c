@@ -11,7 +11,7 @@ int main(int argc, char **argv){
 	int token = 0;
 
 	if (argc < 2){
-		fprintf(stderr, "Call should be: ./a.out <input file name>\n");
+		fprintf(stderr, "Call should be: ./etapa2 <input file name>\n");
 		exit(1);
 	} 
 
@@ -25,5 +25,6 @@ int main(int argc, char **argv){
 
     yyparse();
 	
+	printf("Finishing with success. /n");
 	exit(0);
 }
