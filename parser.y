@@ -37,12 +37,11 @@ int yyerror ();
 
 %%
 /*TODO:
-    incluir varType no vetor, controlando os tipos aceitáveis
-    revisar na especificação se tenho que fazer mais algum controle de tipo
     verificar se funções e comandos estão OK
     verificar se label está certo
-    SEGUIR A PARTIR DE EXPRESSÕES ARITMÉTICAS
     trocar o conteudo de expression
+    testar se está aceitando declaração de função terminada por ; - não pode
+    testar se está aceitando { }
 */
 
 program: declarationList
@@ -60,10 +59,14 @@ varDecl: simpleVar
 funDecl: header body
     ;
 
-simpleVar: varType TK_IDENTIFIER ':' initialVarVal ';'
+simpleVar: KW_CHAR TK_IDENTIFIER ':' literal ';'
+    | KW_INT TK_IDENTIFIER ':' literal ';'
+    | KW_FLOAT TK_IDENTIFIER ':' fraction ';'
     ;
 
-vector: TK_IDENTIFIER '[' size ']' vectorTail
+vector: KW_CHAR TK_IDENTIFIER '[' size ']' vectorTail
+    | KW_INT TK_IDENTIFIER '[' size ']' vectorTail
+    | KW_FLOAT TK_IDENTIFIER '[' size ']' vectorTail
     ;
 
 varType: KW_CHAR
@@ -74,9 +77,8 @@ varType: KW_CHAR
 fraction: LIT_INTEGER '/' LIT_INTEGER
     ;
 
-initialVarVal: LIT_INTEGER
+literal: LIT_INTEGER
     | LIT_CHAR
-    | fraction
     ;
 
 vectorTail: ':' initialVecVal
@@ -149,7 +151,7 @@ printList: LIT_STRING ',' printList
     | expression
     ;
 
-returnCmd: KW_RETURN expression
+returnCmd: KW_RETURN expression //expresao que dá o valor de retorno
     ;
 
 ifCmd: KW_IF expression KW_THEN cmd
