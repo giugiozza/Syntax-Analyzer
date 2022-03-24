@@ -54,11 +54,11 @@ simpleVar: KW_CHAR TK_IDENTIFIER ':' literal ';'
     ;
 
  vector: KW_CHAR TK_IDENTIFIER '[' LIT_INTEGER ']' ';'
-    | KW_CHAR TK_IDENTIFIER '[' LIT_INTEGER ']' ':' initialVecVal ';'
     | KW_INT TK_IDENTIFIER '[' LIT_INTEGER ']' ';'
-    | KW_INT TK_IDENTIFIER '[' LIT_INTEGER ']' ':' initialVecVal ';'
     | KW_FLOAT TK_IDENTIFIER '[' LIT_INTEGER ']' ';'
-    | KW_FLOAT TK_IDENTIFIER '[' LIT_INTEGER ']' ':' initialVecVal ';'
+    | KW_CHAR TK_IDENTIFIER '[' LIT_INTEGER ']' initialVecVal ';'
+    | KW_INT TK_IDENTIFIER '[' LIT_INTEGER ']' initialVecVal ';'
+    | KW_FLOAT TK_IDENTIFIER '[' LIT_INTEGER ']' initialVecVal ';'
     ;
 
 literal: LIT_CHAR
@@ -68,10 +68,15 @@ literal: LIT_CHAR
 fraction: LIT_INTEGER '/' LIT_INTEGER
     ;
 
-initialVecVal: LIT_INTEGER initialVecVal
-    | LIT_CHAR initialVecVal
+initialVecVal: ':' LIT_INTEGER moreVecVal
+    | ':' LIT_CHAR moreVecVal
+    ;
+    
+moreVecVal: LIT_INTEGER moreVecVal
+    | LIT_CHAR moreVecVal
     | 
     ;
+
 %%
 
 int yyerror (){
