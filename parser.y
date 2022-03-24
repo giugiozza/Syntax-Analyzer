@@ -45,6 +45,7 @@ declarationList: varDecl declarationList
     ;
 
 varDecl: simpleVar
+    | vector
     ;
 
 simpleVar: KW_CHAR TK_IDENTIFIER ':' literal ';'
@@ -52,11 +53,24 @@ simpleVar: KW_CHAR TK_IDENTIFIER ':' literal ';'
     | KW_FLOAT TK_IDENTIFIER ':' fraction ';'
     ;
 
+ vector: KW_CHAR TK_IDENTIFIER '[' LIT_INTEGER ']' ';'
+    | KW_CHAR TK_IDENTIFIER '[' LIT_INTEGER ']' ':' initialVecVal ';'
+    | KW_INT TK_IDENTIFIER '[' LIT_INTEGER ']' ';'
+    | KW_INT TK_IDENTIFIER '[' LIT_INTEGER ']' ':' initialVecVal ';'
+    | KW_FLOAT TK_IDENTIFIER '[' LIT_INTEGER ']' ';'
+    | KW_FLOAT TK_IDENTIFIER '[' LIT_INTEGER ']' ':' initialVecVal ';'
+    ;
+
 literal: LIT_CHAR
     | LIT_INTEGER
     ;
 
 fraction: LIT_INTEGER '/' LIT_INTEGER
+    ;
+
+initialVecVal: LIT_INTEGER initialVecVal
+    | LIT_CHAR initialVecVal
+    | 
     ;
 %%
 
