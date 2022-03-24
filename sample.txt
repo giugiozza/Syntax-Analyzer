@@ -1,1 +1,10 @@
-char c: "x";
+char c: 'x';
+char d: 100;
+int a: 'A';
+int i: 1;
+\\int matrix[100];
+\\char matrix[100]; 
+\\float matrix[100]; 
+\\int v[10]: 'a' 0 0 0 0 0 0 0 0 0;
+\\int matrix[100]; 
+float f: 2/3;
