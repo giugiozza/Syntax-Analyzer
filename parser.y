@@ -129,6 +129,11 @@ printList: LIT_STRING
     ;
 
 flowControl: KW_GOTO TK_IDENTIFIER // label name
+    | whileCmd
+    ;
+
+
+whileCmd: KW_WHILE expression cmd
     ;
 
 expression: TK_IDENTIFIER
