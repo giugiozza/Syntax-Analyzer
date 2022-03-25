@@ -99,6 +99,7 @@ anotherParameters: ',' parametersList
     ;
 
 cmd: returnCmd
+    | printCmd
     | cmdBlock
     | 
     ;
@@ -116,6 +117,16 @@ label: TK_IDENTIFIER ':'
 
 returnCmd: KW_RETURN expression //expression that gives the return value
     ;
+
+printCmd: KW_PRINT printList
+    ;
+
+printList: LIT_STRING
+    | LIT_STRING ',' printList
+    | expression
+    | expression ',' printList
+    ;
+
 
 expression: TK_IDENTIFIER
     | aritmethicExpression

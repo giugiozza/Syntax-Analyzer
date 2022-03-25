@@ -10,7 +10,7 @@ int matrix[100];
 float f: 2/3;
 float x[2]: 2 'a';
 
-int main () {return "a";}
+int main () {return a;}
 int incn (char x , int n, char x , float n ) 
 
 int incn (char x , int n, char x , float n ) {;}
