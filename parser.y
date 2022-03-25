@@ -100,6 +100,7 @@ anotherParameters: ',' parametersList
 
 cmd: returnCmd
     | printCmd
+    | flowControl
     | cmdBlock
     | 
     ;
@@ -127,6 +128,8 @@ printList: LIT_STRING
     | expression ',' printList
     ;
 
+flowControl: KW_GOTO TK_IDENTIFIER // label name
+    ;
 
 expression: TK_IDENTIFIER
     | aritmethicExpression
