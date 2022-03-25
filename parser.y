@@ -130,7 +130,6 @@ printList: LIT_STRING
 
 expression: TK_IDENTIFIER
     | aritmethicExpression
-    | LIT_STRING
     | KW_READ
     | funCall
     ;
