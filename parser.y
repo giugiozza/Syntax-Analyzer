@@ -120,6 +120,7 @@ expression: TK_IDENTIFIER
     | aritmethicExpression
     | LIT_STRING
     | KW_READ
+    | funCall
     ;
 
 aritmethicExpression: literal
@@ -135,6 +136,16 @@ aritmethicExpression: literal
     | aritmethicExpression OPERATOR_DIF aritmethicExpression
     | aritmethicExpression OPERATOR_LE aritmethicExpression
     | aritmethicExpression OPERATOR_GE aritmethicExpression
+    ;
+
+funCall: TK_IDENTIFIER '(' argList ')'
+    ;
+
+argList: expression argListCont
+    ;
+
+argListCont: ',' argList
+    |
     ;
 
 %%
