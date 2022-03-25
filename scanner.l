@@ -1,16 +1,13 @@
-	// Giulia Giozza, 2022
+// Giulia Giozza, 2022
 
 %{	
 	#include "y.tab.h"
 	#include "hash.c"
-
-
 	int Running = 1;
 	int lineNumber = 1;
-
 	int isRunning(void);
-    int getLineNumber(void);
-    void initMe(void);
+	int getLineNumber(void);
+	void initMe(void);
 %}
 
 %x COMMENT
