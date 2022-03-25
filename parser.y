@@ -41,11 +41,15 @@ program: declarationList
     ;
 
 declarationList: varDecl declarationList
+    | funDecl declarationList
     |
     ;
 
 varDecl: simpleVar
     | vector
+    ;
+
+funDecl: header cmd
     ;
 
 simpleVar: KW_CHAR TK_IDENTIFIER ':' literal ';'
@@ -54,10 +58,10 @@ simpleVar: KW_CHAR TK_IDENTIFIER ':' literal ';'
     ;
 
  vector: KW_CHAR TK_IDENTIFIER '[' LIT_INTEGER ']' ';'
-    | KW_INT TK_IDENTIFIER '[' LIT_INTEGER ']' ';'
-    | KW_FLOAT TK_IDENTIFIER '[' LIT_INTEGER ']' ';'
     | KW_CHAR TK_IDENTIFIER '[' LIT_INTEGER ']' initialVecVal ';'
+    | KW_INT TK_IDENTIFIER '[' LIT_INTEGER ']' ';'
     | KW_INT TK_IDENTIFIER '[' LIT_INTEGER ']' initialVecVal ';'
+    | KW_FLOAT TK_IDENTIFIER '[' LIT_INTEGER ']' ';'
     | KW_FLOAT TK_IDENTIFIER '[' LIT_INTEGER ']' initialVecVal ';'
     ;
 
@@ -76,6 +80,46 @@ moreVecVal: LIT_INTEGER moreVecVal
     | LIT_CHAR moreVecVal
     | 
     ;
+
+header: KW_CHAR TK_IDENTIFIER '(' parametersList ')'
+    | KW_CHAR TK_IDENTIFIER '(' ')'
+    | KW_INT TK_IDENTIFIER '(' parametersList ')'
+    | KW_INT TK_IDENTIFIER '(' ')'
+    | KW_FLOAT TK_IDENTIFIER '(' parametersList ')'
+    | KW_FLOAT TK_IDENTIFIER '(' ')'
+    ;
+
+parametersList: KW_FLOAT TK_IDENTIFIER anotherParameters
+    | KW_INT TK_IDENTIFIER anotherParameters
+    | KW_CHAR TK_IDENTIFIER anotherParameters
+    ;
+
+anotherParameters: ',' parametersList
+    |
+    ;
+
+cmd: returnCmd
+    | cmdBlock
+    | 
+    ;
+
+cmdBlock: '{' cmdBlockList '}'
+    ;
+
+cmdBlockList: cmd ';'
+    | label
+    ;
+
+label: TK_IDENTIFIER ':'
+    ;
+
+returnCmd: KW_RETURN expression //expression that gives the return value
+    ;
+
+expression: TK_IDENTIFIER
+    | LIT_STRING
+    ;
+
 
 %%
 

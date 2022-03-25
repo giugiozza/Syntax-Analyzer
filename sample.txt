@@ -10,8 +10,14 @@ int matrix[100];
 float f: 2/3;
 float x[2]: 2 'a';
 
-int main ()
-int incn (int x )
-//int incn (char x , int n, char x , float n )
-//int incn (char x , int n, char x , float n )
+int main () {return "a";}
+int incn (int x ) {return x; return x; }
+int incn (char x , int n, char x , float n ) 
+
+int incn (char x , int n, char x , float n ) {;}
+
+int incn (char x , int n, char x , float n ) {x:}
+
+int incn (char x , int n, char x , float n ) {}
+
 
