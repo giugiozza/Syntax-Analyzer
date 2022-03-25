@@ -7,6 +7,7 @@ int v[10]: 'a' 0 0 0 0 0 0 0 0 0;
 int matrix[100]; 
 float f: 2/3;
 
+
 \*
 This is a comment 
 of multiple lines
@@ -14,6 +15,9 @@ of multiple lines
 
 int main ()
   {
+  print (a);
+x = a();
+a:
   a = 0;
   a = a - i;
   a = 5;

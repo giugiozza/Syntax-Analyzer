@@ -167,6 +167,7 @@ funCall: TK_IDENTIFIER '(' argList ')'
     ;
 
 argList: expression argListCont
+    | 
     ;
 
 argListCont: ',' argList
