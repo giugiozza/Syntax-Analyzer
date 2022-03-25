@@ -115,6 +115,7 @@ cmdBlockList: cmd ';'
     ;
 
 label: TK_IDENTIFIER ':'
+    | TK_IDENTIFIER ':' cmdBlockList
     ;
 
 returnCmd: KW_RETURN expression //expression that gives the return value
@@ -140,14 +141,15 @@ attribution: TK_IDENTIFIER '=' expression
     ;
 
 expression: TK_IDENTIFIER
-    | aritmethicExpression
     | KW_READ
     | funCall
+    | aritmethicExpression
     ;
 
 aritmethicExpression: literal
-    | '(' aritmethicExpression ')'
-    | TK_IDENTIFIER '[' aritmethicExpression ']' //TK_IDENTIFIER '[' integerExpression ']'
+    | TK_IDENTIFIER
+    | TK_IDENTIFIER '[' aritmethicExpression ']' //TK_IDENTIFIER '[' integerExpression ']' 
+    | funCall
     | aritmethicExpression '+' aritmethicExpression
     | aritmethicExpression '-' aritmethicExpression
     | aritmethicExpression '*' aritmethicExpression
@@ -158,6 +160,7 @@ aritmethicExpression: literal
     | aritmethicExpression OPERATOR_DIF aritmethicExpression
     | aritmethicExpression OPERATOR_LE aritmethicExpression
     | aritmethicExpression OPERATOR_GE aritmethicExpression
+    | '(' aritmethicExpression ')'
     ;
 
 funCall: TK_IDENTIFIER '(' argList ')'
