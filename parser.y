@@ -117,9 +117,25 @@ returnCmd: KW_RETURN expression //expression that gives the return value
     ;
 
 expression: TK_IDENTIFIER
+    | aritmethicExpression
     | LIT_STRING
+    | KW_READ
     ;
 
+aritmethicExpression: literal
+    | '(' aritmethicExpression ')'
+    | TK_IDENTIFIER '[' aritmethicExpression ']' //TK_IDENTIFIER '[' integerExpression ']'
+    | aritmethicExpression '+' aritmethicExpression
+    | aritmethicExpression '-' aritmethicExpression
+    | aritmethicExpression '*' aritmethicExpression
+    | aritmethicExpression '/' aritmethicExpression
+    | aritmethicExpression '>' aritmethicExpression
+    | aritmethicExpression '<' aritmethicExpression
+    | aritmethicExpression OPERATOR_EQ aritmethicExpression
+    | aritmethicExpression OPERATOR_DIF aritmethicExpression
+    | aritmethicExpression OPERATOR_LE aritmethicExpression
+    | aritmethicExpression OPERATOR_GE aritmethicExpression
+    ;
 
 %%
 
