@@ -107,6 +107,7 @@ cmdBlock: '{' cmdBlockList '}'
     ;
 
 cmdBlockList: cmd ';'
+    | cmd ';' cmdBlockList
     | label
     ;
 
