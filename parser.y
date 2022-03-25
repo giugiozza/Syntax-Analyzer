@@ -102,6 +102,7 @@ cmd: returnCmd
     | printCmd
     | flowControl
     | cmdBlock
+    | attribution
     | 
     ;
 
@@ -129,11 +130,13 @@ printList: LIT_STRING
     ;
 
 flowControl: KW_GOTO TK_IDENTIFIER // label name
-    | whileCmd
+    | KW_WHILE expression cmd
+    | KW_IF expression KW_THEN cmd
+    | KW_IF expression KW_THEN cmd KW_ELSE cmd
     ;
 
-
-whileCmd: KW_WHILE expression cmd
+attribution: TK_IDENTIFIER '=' expression
+    | TK_IDENTIFIER '[' expression ']' '=' expression
     ;
 
 expression: TK_IDENTIFIER
