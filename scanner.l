@@ -1,6 +1,7 @@
-// Giulia Giozza, 2022
+%{
+	// Giulia Giozza, 2022
 
-%{	
+
 	#include "y.tab.h"
 	#include "hash.c"
 	int Running = 1;

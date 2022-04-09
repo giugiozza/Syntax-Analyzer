@@ -140,9 +140,7 @@ attribution: TK_IDENTIFIER '=' expression
     | TK_IDENTIFIER '[' expression ']' '=' expression
     ;
 
-expression: TK_IDENTIFIER
-    | KW_READ
-    | funCall
+expression: KW_READ
     | aritmethicExpression
     ;
 
