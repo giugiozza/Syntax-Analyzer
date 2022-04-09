@@ -25,6 +25,6 @@ int main(int argc, char **argv){
 
     yyparse();
 	
-	printf("Finishing with success. \n");
+	printf("Finished with success. \n\n");
 	exit(0);
 }

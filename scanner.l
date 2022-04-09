@@ -55,7 +55,7 @@
 \'(\\.|[^'\n\t])'	{hashInsert(yytext, LIT_CHAR); return LIT_CHAR;}
 
 	/* IDENTIFIERS */
-[-a-z_]+   {hashInsert(yytext, TK_IDENTIFIER); return TK_IDENTIFIER;}
+[-_a-z]+   {hashInsert(yytext, TK_IDENTIFIER); return TK_IDENTIFIER;}
 
 	/* COMMENTS */
 \\\\.*
