@@ -109,13 +109,12 @@ cmd: returnCmd
 cmdBlock: '{' cmdBlockList '}'
     ;
 
-cmdBlockList: cmd ';'
-    | cmd ';' cmdBlockList
+cmdBlockList: cmd ';' cmdBlockList
     | label
+    |
     ;
 
-label: TK_IDENTIFIER ':'
-    | TK_IDENTIFIER ':' cmdBlockList
+label: TK_IDENTIFIER ':' cmdBlockList
     ;
 
 returnCmd: KW_RETURN expression //expression that gives the return value

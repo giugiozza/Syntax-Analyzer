@@ -56,7 +56,7 @@ a:
 
 int incn (int x , int n )
   {
-  return x+n;
+ 
   }
 
 int function_y ( ) { ; }
