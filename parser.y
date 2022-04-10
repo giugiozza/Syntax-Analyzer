@@ -111,7 +111,7 @@ cmdBlock: '{' cmdBlockList '}'
 
 cmdBlockList: cmd ';' cmdBlockList
     | label
-    |
+    | // accepts empty cmd block
     ;
 
 label: TK_IDENTIFIER ':' cmdBlockList
